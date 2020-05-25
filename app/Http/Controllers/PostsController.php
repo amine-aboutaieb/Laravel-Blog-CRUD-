@@ -23,7 +23,7 @@ class PostsController extends Controller
             foreach(auth()->user()->follows as $follow){
                 array_push($followsIds,$follow->followed);
             }
-
+            
             $ids = $followsIds;
             array_push($ids, auth()->user()->id);
 

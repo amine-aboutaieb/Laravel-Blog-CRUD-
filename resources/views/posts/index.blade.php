@@ -13,8 +13,9 @@
                         <small>{{$post->user->name}}</small>
                     </div>
                 </div>
+                @include('inc.updateAndDel')
             @endforeach
-
+            
             {{$posts->links()}}
 
         </div>
