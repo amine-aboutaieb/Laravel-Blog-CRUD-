@@ -32,3 +32,6 @@ Route::get('/unfollow/{id}', 'FollowsController@removeFollow');
 Route::post('/comment/{id}','CommentsController@addComment');
 
 Route::get('/comment/{id}/remove','CommentsController@removeComment');
+
+Route::get('/comment/{id}/edit','CommentsController@edit');
+Route::post('/comment/{id}/update','CommentsController@update');

@@ -34,4 +34,18 @@ class CommentsController extends Controller
             return redirect('/posts')->with('success','Unauthorized resource');
         }
     }
+    public function edit($id){
+        $comment = Comment::find($id);
+        return view('comments.edit')->with('comment',$comment);
+    }
+
+    public function update($id){
+        $request = request();
+        $comment = Comment::find($id);
+        $comment->body = $request->body;
+        $comment->save();
+
+        return redirect('/posts')->with('success','Comment updated');
+    }
+
 }

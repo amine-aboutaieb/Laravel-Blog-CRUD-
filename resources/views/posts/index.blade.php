@@ -25,7 +25,8 @@
                                 <strong>{{$comment->user->name}}</strong><i class="mx-2">{{$comment->body}}</i>
                                 @if (Auth::check())
                                     @if (Auth::user()->id === $comment->user->id)
-                                        <a href="/comment/{{$comment->id}}/remove" class="btn btn-danger float-right">Remove</a>
+                                        <a href="/comment/{{$comment->id}}/remove" class="btn btn-danger float-right mx-1">Remove</a>
+                                        <a href="/comment/{{$comment->id}}/edit" class="btn btn-dark float-right mx-1">Edit</a>
                                     @endif
                                 @endif
                             </small>
