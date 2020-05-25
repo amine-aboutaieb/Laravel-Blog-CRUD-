@@ -27,3 +27,6 @@ Route::get('/users/{id}','UsersController@show');
 
 Route::get('/follow/{id}', 'FollowsController@addFollow');
 Route::get('/unfollow/{id}', 'FollowsController@removeFollow');
+
+
+Route::post('/comment/{id}','CommentsController@addComment');

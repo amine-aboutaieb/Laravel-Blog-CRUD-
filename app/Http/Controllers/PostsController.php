@@ -27,10 +27,10 @@ class PostsController extends Controller
             $ids = $followsIds;
             array_push($ids, auth()->user()->id);
 
-            $posts = Post::whereIn('id_user',$ids)->orderBy('id','desc')->paginate(2);
+            $posts = Post::whereIn('id_user',$ids)->orderBy('id','desc')->paginate(3);
 
         }else{
-            $posts = Post::orderBy('id','desc')->paginate(2);
+            $posts = Post::orderBy('id','desc')->paginate(3);
         }
 
         return view('posts.index')->with('posts',$posts);
