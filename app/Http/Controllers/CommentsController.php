@@ -19,10 +19,19 @@ class CommentsController extends Controller
         $comment->post_id = $id;
         $comment->user_id = auth()->user()->id;
         $comment->body = $request->comment_field;
-        
         $comment->save();
         
-
         return redirect('/posts')->with('success','Comment added');
+    }
+
+    public function removeComment($id){
+        if(auth()->user()->id){
+            $comment = Comment::findOrFail($id);
+            $comment->delete();
+
+            return redirect('/posts')->with('success','Comment removed');
+        }else{
+            return redirect('/posts')->with('success','Unauthorized resource');
+        }
     }
 }

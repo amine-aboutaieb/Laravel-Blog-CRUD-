@@ -21,7 +21,14 @@
                     <div class="card my-4">
                         <p class="card-header">Comments</p>
                         @foreach ($post->comments as $comment)
-                            <small class="mx-2 my-2"><strong>{{$comment->user->name}}</strong><i class="mx-2">{{$comment->body}}</i></small>
+                            <small class="mx-2 my-2">
+                                <strong>{{$comment->user->name}}</strong><i class="mx-2">{{$comment->body}}</i>
+                                @if (Auth::check())
+                                    @if (Auth::user()->id === $comment->user->id)
+                                        <a href="/comment/{{$comment->id}}/remove" class="btn btn-danger float-right">Remove</a>
+                                    @endif
+                                @endif
+                            </small>
                         @endforeach
                     </div>
                     @endif
