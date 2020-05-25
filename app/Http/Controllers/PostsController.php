@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use App\User;
 use Illuminate\Support\Facades\Auth;
 
 class PostsController extends Controller
@@ -16,9 +17,20 @@ class PostsController extends Controller
      */
     public function index()
     {
-        $posts = Post::orderBy('id','desc')->paginate(2);
+        if(auth()->user()){
+            
+            $followsIds = [];
+            foreach(auth()->user()->follows as $follow){
+                array_push($followsIds,$follow->followed);
+            }
+            $posts = Post::whereIn('id_user',$followsIds)->orderBy('id','desc')->paginate(2);
 
+        }else{
+            $posts = Post::orderBy('id','desc')->paginate(2);
+        }
         return view('posts.index')->with('posts',$posts);
+        
+        
     }
 
     /**

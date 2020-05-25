@@ -40,4 +40,8 @@ class User extends Authenticatable
     public function posts(){
         return $this->hasMany('App\Post','id_user');
     }
+    public function follows(){
+        return $this->hasMany('App\Follow','follower')->select(['followed']);
+    }
+    
 }

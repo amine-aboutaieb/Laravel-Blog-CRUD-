@@ -11,12 +11,13 @@
         </div>
         <h3>Posts</h3>
         @foreach ($user->posts as $post)
-            <div class="card w-75 my-3">
+            <div class="card my-3">
                 <div class="card-body">
                     <h3 class="card-title"><a href="/posts/{{$post->id}}">{{$post->title}}</a></h3>
                     <small>{{$post->created_at}} by {{$post->user->name}}</small>
                 </div>
             </div>
+            @include('inc.updateAndDel')
         @endforeach
     </div>
 @endsection

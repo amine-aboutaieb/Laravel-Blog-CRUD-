@@ -15,7 +15,9 @@
                 </div>
                 @include('inc.updateAndDel')
             @endforeach
+
             {{$posts->links()}}
+
         </div>
     </div>
 @endsection
