@@ -23,11 +23,16 @@ class PostsController extends Controller
             foreach(auth()->user()->follows as $follow){
                 array_push($followsIds,$follow->followed);
             }
-            $posts = Post::whereIn('id_user',$followsIds)->orderBy('id','desc')->paginate(2);
+
+            $ids = $followsIds;
+            array_push($ids, auth()->user()->id);
+
+            $posts = Post::whereIn('id_user',$ids)->orderBy('id','desc')->paginate(2);
 
         }else{
             $posts = Post::orderBy('id','desc')->paginate(2);
         }
+
         return view('posts.index')->with('posts',$posts);
         
         

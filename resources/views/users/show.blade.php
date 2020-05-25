@@ -17,7 +17,6 @@
                     <small>{{$post->created_at}} by {{$post->user->name}}</small>
                 </div>
             </div>
-            @include('inc.updateAndDel')
         @endforeach
     </div>
 @endsection
